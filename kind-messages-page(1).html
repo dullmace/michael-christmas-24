@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Christmas Messages for Michael</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        :root {
+            --bg-primary: #f5f7fa;
+            --bg-secondary: #ffffff;
+            --text-primary: #2d3748;
+            --text-secondary: #4a5568;
+            --text-tertiary: #718096;
+            --shadow: rgba(0, 0, 0, 0.1);
+            --card-transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .dark {
+            --bg-primary: #1a202c;
+            --bg-secondary: #2d3748;
+            --text-primary: #f7fafc;
+            --text-secondary: #e2e8f0;
+            --text-tertiary: #a0aec0;
+            --shadow: rgba(0, 0, 0, 0.3);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background: var(--bg-primary);
+            min-height: 100vh;
+            margin: 0;
+            padding: clamp(20px, 5vw, 40px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: background-color var(--card-transition);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            padding: clamp(20px, 3vw, 40px);
+        }
+
+        h1 {
+            font-family: 'Pacifico', cursive;
+            color: var(--text-primary);
+            text-align: center;
+            animation: float 3s ease-in-out infinite;
+            margin: clamp(20px, 5vh, 40px) 0;
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            font-weight: normal;
+            text-shadow: 2px 2px 4px var(--shadow);
+            line-height: 1.3;
+            letter-spacing: 0.02em;
+        }
+
+        .subtitle {
+            color: var(--text-tertiary);
+            text-align: center;
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            margin-bottom: clamp(30px, 6vh, 60px);
+            animation: fadeIn 0.6s ease-out forwards;
+            line-height: 1.6;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .message-card {
+            background: var(--bg-secondary);
+            border-radius: 20px;
+            padding: clamp(20px, 4vw, 30px);
+            margin: clamp(20px, 4vh, 30px) 0;
+            box-shadow: 0 4px 6px var(--shadow);
+            animation: fadeIn 0.6s ease-out forwards;
+            opacity: 0;
+            transition: all var(--card-transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .message-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 12px 20px var(--shadow);
+        }
+
+        .message-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, var(--text-primary), transparent);
+            opacity: 0;
+            transition: opacity var(--card-transition);
+        }
+
+        .message-card:hover::before {
+            opacity: 0.05;
+        }
+
+        .message-card:nth-child(2) { animation-delay: 0.2s; }
+        .message-card:nth-child(3) { animation-delay: 0.4s; }
+        .message-card:nth-child(4) { animation-delay: 0.6s; }
+        .message-card:nth-child(5) { animation-delay: 0.8s; }
+
+        .message {
+            color: var(--text-secondary);
+            font-size: clamp(1rem, 2.5vw, 1.1rem);
+            line-height: 1.7;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .friend-name {
+            color: var(--text-tertiary);
+            font-style: italic;
+            text-align: right;
+            margin-top: 15px;
+            font-size: clamp(0.9rem, 2vw, 1rem);
+            position: relative;
+            z-index: 1;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: clamp(20px, 5vw, 30px);
+            right: clamp(20px, 5vw, 30px);
+            background: var(--bg-secondary);
+            border: none;
+            border-radius: 50%;
+            width: clamp(40px, 8vw, 50px);
+            height: clamp(40px, 8vw, 50px);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            box-shadow: 0 2px 8px var(--shadow);
+            transition: all var(--card-transition);
+            z-index: 100;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 4px 12px var(--shadow);
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .message-card {
+                margin: 15px 0;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .container {
+                padding: 40px;
+            }
+            
+            .message-card {
+                margin: 30px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
+    
+    <div class="container">
+        <h1>🎁 Merry Christmas Michael 🎁</h1>
+        <div class="subtitle">
+            A few of your friends wanted to share some kind words to show just how much you mean to us.😊
+        </div>
+        
+        <div class="message-card">
+            <div class="message">
+                "Thank you Michael for doing this and bringing people in the DIY scene together!!"
+            </div>
+            <div class="friend-name">- Lily</div>
+        </div>
+
+        <div class="message-card">
+            <div class="message">
+                "Ig I’ll be real for a sec. I love you Michael, even though you stupid as fuck sometimes, you’re figuring it out."
+            </div>
+            <div class="friend-name">- Hunter</div>
+        </div>
+
+        <div class="message-card">
+            <div class="message">
+                "Michael, first of all, thank you for your service. I know you solely from joining the same discord voice channel as you for about 2 minutes and seeing your interactions online, but you are one hell of a trooper. Seriously a great person to have in the community and I hope you have a wonderful year and fun seeing Free Throw on this 10yr tour (i got tickets for nashville) ❤️ "
+            </div>
+            <div class="friend-name">- Saint Murrary</div>
+        </div>
+
+        <div class="message-card">
+            <div class="message">
+                "You're a good person and you deserve better than you treat yourself."
+            </div>
+            <div class="friend-name">- Ben</div>
+        </div>
+
+        <div class="message-card">
+            <div class="message">
+                "Merry Christmas Michael! Without you I wouldn't have made such great friends in your circle. So thankful for you and what you have brought into my life. Love you always!"
+            </div>
+            <div class="friend-name">- Allison(:</div>
+        </div>
+            <div class="message-card">
+            <div class="message">
+                "Michael - you are a wonderfully awesome guy with a lot of fun ideas, and I love seeing what you share with the world!"
+            </div>
+            <div class="friend-name">- Valorie</div>
+        </div>
+
+        <div class="message-card">
+            <div class="message">
+                "Hi Michael, congrats on becoming a twitch partner and all the dope releases on Reply Guy this year!"
+            </div>
+            <div class="friend-name">- Ryan</div>
+        </div>
+
+        <div class="message-card">
+            <div class="message">
+                "Hi Michael. You’re the goat, love ya dawg  "
+            </div>
+            <div class="friend-name">- Hunter (Helphas)</div>
+        </div>
+
+        <div class="message-card">
+            <div class="message">
+                "love you buddy"
+            </div>
+            <div class="friend-name">- Mateo</div>
+        </div>
+
+        <div class="message-card">
+            <div class="message">
+                "write more poems, i love them.  just less couplets pls ♥"
+            </div>
+            <div class="friend-name">- Dalton</div>
+        </div>
+        
+        <div class="message-card">
+            <div class="message">
+                "MICHAEL!!!!!! you have always made me feel included and appreciated and loved, and i really appreciate you for that. i always love to talk to you about whatever for even just 10 minutes. you are so very much appreciated by everyone here🫶🫶"
+            </div>
+            <div class="friend-name">- Claire</div>
+        </div>
+        
+        <div class="message-card">
+            <div class="message">
+                "love you michael!! you’re always super fun to hang out with and im super glad i joined commonism and started joining the voice calls because you guys are a joy to be around! love catching and participating in some of ur streams and you’ll always be the #1 free throw fan in my eyes no matter what <3"
+            </div>
+            <div class="friend-name">- façade</div>
+        </div>
+        
+        <div class="message-card">
+            <div class="message">
+                "thank you Micheal for contributing to the community!!! My goat"
+            </div>
+            <div class="friend-name">- waozer</div>
+        </div>
+
+        <div class="message-card">
+            <div class="message">
+                "Hi Michael!!!!! You're so swell!!! Thank you for what you do for music, your community, and your friends! Your presence and care are both lights for us all :)"
+            </div>
+            <div class="friend-name">- Nish (tenmonthsummer)</div>
+        </div>
+
+        <div class="message-card">
+            <div class="message">
+                "we love you big dawg, thanks for lifting us up in ways we could never imagine, and thank you for being terrible at Helldivers. we buds forever."
+            </div>
+            <div class="friend-name">- 95COROLLA</div>
+        </div>
+
+        <div class="message-card">
+            <div class="message">
+                "Micheal you're one of the sweetest kindest dudes on here stay safe"
+            </div>
+            <div class="friend-name">- Adrian</div>
+        </div>
+
+        <div class="message-card">
+            <div class="message">
+                "We may have only just met this year but I’m sincerely so fucking happy to have someone as genuine and rad as you in the scene! You seem like one of the truly good ones and I can’t wait to hang again this upcoming year I’m sure!"
+            </div>
+            <div class="friend-name">- Will (Full Blown Meltdown)</div>
+        </div>
+
+        <div class="message-card">
+            <div class="message">
+                "Merry Christmas Michael!!! We never really talk but it's been great being moots with you for years 🫡 "
+            </div>
+            <div class="friend-name">- Frankie Leyna / @SoftxSweet</div>
+        </div>
+
+        <div class="message-card">
+            <div class="message">
+                "write more poems, i love them.  just less couplets pls ♥"
+            </div>
+            <div class="friend-name">- Dalton</div>
+        </div>
+        
+        <div class="message-card">
+            <div class="message">
+                "Hey Michael, I just want to express my sincere gratitude for your friendship, and your incredible impact on this community. You've truly created a space where people feel welcomed, valued, and encouraged to be themselves. I'm grateful that you brought me into your community. You've made me feel accepted and feel like people actually enjoy my silly antics. It means the world to me. Your positive energy and infectious enthusiasm are truly inspiring. You have a unique ability to bring people together and create a sense of camaraderie that's hard to find, and I'm lucky to have you as a growing friend. I hope the year ahead brings you all the joy, success, and fulfillment you truly deserve—and you deserve far more than you let yourself think. May all your dreams come true, and may you continue to spread your positivity to everyone you encounter. Here's to you, Michael!"
+            </div>
+            <div class="friend-name">- Aaron</div>
+        </div>        
+    </div>
+
+    <script>
+        function toggleTheme() {
+            document.documentElement.classList.toggle('dark');
+        }
+    </script>
+</body>
+</html>
